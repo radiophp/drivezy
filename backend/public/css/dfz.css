@@ -1,0 +1,189 @@
+@import url('fonts.css');
+body {
+    font-family: 'HelveticaNeue', sans-serif;
+
+
+}
+.titles{
+    letter-spacing: 1px;
+    word-spacing: 1px;
+}
+.invoice {
+    padding: 15px;
+    padding-bottom: 0;
+    /*border: 1px solid #ccc;*/
+
+    margin: 0 auto;
+    padding-top: 33px;
+}
+.invoice-header {
+    text-align: left;
+    margin-bottom: 20px;
+}
+.invoice-header h1 {
+    margin: 0;
+}
+.invoice-info-section {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+.invoice-info-box {
+    width: 45%;
+    padding: 15px;
+    border: 0px solid #ccc;
+}
+.invoice-info p {
+    margin: 0;
+}
+.invoice-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+.invoice-table th, .invoice-table td {
+    padding: 8px;
+    border: 1px solid #ccc;
+}
+.invoice-table th {
+    background-color: #f2f2f2;
+}
+.invoice-total {
+    margin-top: 20px;
+    text-align: right;
+}
+.invoice-total p {
+    margin-bottom: 5px;
+}
+.checkbox-row {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.checkbox-label {
+    margin-right: 10px;
+}
+.invoice-logo {
+    text-align: right;
+    margin-bottom: 12px;
+    margin-top: 1px;
+}
+.invoice-logo img {
+    max-width: 355px;
+}
+.row-with-boxes {
+    display: flex;
+    justify-content: space-between;
+    line-height: 16px;
+    font-size: 10pt;
+    padding-left: 6px;
+    padding-right: 2px;
+    margin-top:71px;
+}
+.row-with-boxes b{
+    font-size: 13px;
+    font-family: 'HelveticaNeue-Bold-02';
+    /*font-weight: 800;*/
+}
+.box {
+    width: calc(33% );
+    padding: 10px 0 0;
+    border: 0 solid #ccc;
+    word-wrap: break-word;
+}
+h2 {
+    margin: 0;
+    padding: 2px 2px 2px 6px;
+    font-size: 14pt;
+    font-family: 'HelveticaNeue-Bold-02';
+    /*font-weight: 800;*/
+}
+p {
+    line-height: 21px;
+    padding: 6px;
+    margin: 0;
+}
+.helv-bold {
+    font-family: 'HelveticaNeue-Bold-02';
+    /*font-weight: 800;*/
+}
+.address {
+    font-size: 8pt;
+}
+.custom-dashed-border {
+    background-repeat: repeat-x; /* or repeat-y for vertical lines */
+    height: 1px !important;
+    margin-left: 7px;
+    margin-right: 7px;
+    width: 100%;
+}
+.customer-details {
+    margin-top: 25px;
+    padding-left: 3px;
+    font-size: 13pt;
+    width: 98%;
+    line-height: 15px;
+    font-family: "HelveticaNeue";
+}
+.shop-owner-details {
+    text-align: right;
+    margin-top: 49px;
+    margin-bottom: 32px;
+    padding-right: 2px;
+}
+.dfz-static {
+    margin-top: 6px;
+    margin-bottom: 42px;
+    font-size: 10pt;
+    line-height: 15px;
+}
+.fahrzeug-table {
+    width: 100%;
+    font-family: 'HelveticaNeue-Bold-02';
+    padding-left: 4px;
+    font-size: 13pt;
+    /*font-weight: 800;*/
+    line-height: 13pt;
+    margin-top: 3px;
+}
+.gesamt-dfz-table {
+    width: 100%;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-left: 3px;
+}
+.gesamtbetrag-table {
+    text-align: right;
+    width: 100%;
+    float: right;
+    margin-top: 68px;
+    margin-bottom: 92px;
+    letter-spacing: 0;
+}
+.price-bold {
+    text-align: right;
+    font-size: 11pt;
+    /*font-weight: bolder;*/
+    font-family: 'HelveticaNeue-Bold-02';
+}
+.price-bold-plus{
+    text-align: right;
+    font-size: 11.3pt;
+    /*font-weight: bolder;*/
+    font-family: 'HelveticaNeue-Bold-02';
+    margin-top: 10px;
+}
+.price-number {
+    text-align: right;
+    font-size: 13pt;
+    /*font-weight: bolder;*/
+    font-family: 'HelveticaNeue-Bold-02';
+}
+.fahrgestell-nr-left-col{
+    width: 43%;
+}
+.fahrgestell-nr{
+    width: 60%;
+    padding-left: 3px;
+    font-size: 12pt;
+    line-height: 12pt;
+}

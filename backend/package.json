@@ -1,0 +1,40 @@
+{
+  "name": "Drivezy_Mix",
+  "version": "1.0.1",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon --legacy-watch --watch . -e js,json app.js  --ignore '__data/*'"
+  },
+  "author": "Pooria Jalili",
+  "license": "ISC",
+  "dependencies": {
+    "@sendgrid/mail": "^7.7.0",
+    "axios": "^1.2.1",
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.1",
+    "car-models": "^1.0.1",
+    "child_process": "^1.0.2",
+    "cors": "^2.8.5",
+    "country-state-city": "^3.2.1",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-validator": "^5.3.0",
+    "fs": "^0.0.1-security",
+    "jsonwebtoken": "^9.0.0",
+    "mkdirp": "^0.5.1",
+    "moment": "^2.29.4",
+    "mongodb-backup": "^1.6.9",
+    "mongoose": "^6.8.1",
+    "mongoose-paginate-v2": "^1.7.1",
+    "mongoose-timestamp": "^0.6.0",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.2",
+    "nodemon": "^2.0.20",
+    "pino": "^8.14.1",
+    "pino-http": "^8.3.3",
+    "pino-pretty": "^10.0.1",
+    "puppeteer": "^21.3.5"
+  },
+  "description": ""
+}

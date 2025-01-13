@@ -1,0 +1,259 @@
+variables:
+  IMAGE_NAME: $CI_REGISTRY_IMAGE
+  #DEV ports
+  DEV_FRONT_PORT: 3000
+  DEV_BACK_PORT: 3001
+  DEV_DB_PORT: 3002
+  DEV_EXPRESS_PORT: 3003
+  #Staging ports
+  STAGING_FRONT_PORT: 4000
+  STAGING_BACK_PORT: 4001
+  STAGING_DB_PORT: 4002
+  STAGING_EXPRESS_PORT: 4003
+  #Prod ports
+  PROD_FRONT_PORT: 5000
+  PROD_BACK_PORT: 5001
+  PROD_DB_PORT: 5002
+  PROD_EXPRESS_PORT: 5003
+  #SET ENDPOINTS
+  DEV_ENDPOINT: "${HTTP_PROTOCOL}://${DEV_IP}:${DEV_BACK_PORT}"
+  STAGING_ENDPOINT: "${HTTP_PROTOCOL}://${STAGING_IP}:${STAGING_BACK_PORT}"
+  PROD_ENDPOINT: "${HTTP_PROTOCOL}://${PROD_IP}:${PROD_BACK_PORT}"
+stages:
+  - test
+  - build
+  - deploy
+#build job template
+.build_push:
+  stage: build
+  # tags:
+  #   - docker
+  image: docker:latest
+  services:
+    - docker:dind
+  variables:
+    MICRO_SERVICE: ""
+    DEPLOY_ENV: ""
+#  artifacts:
+#    paths:
+#      - version-file.txt
+  before_script:
+    - apk add --no-cache jq
+    - cd $MICRO_SERVICE
+    - export IMAGE_NAME=$CI_REGISTRY_IMAGE/microservice/$MICRO_SERVICE
+    - export PACKAGE_JSON_VERSION=$(cat package.json | jq -r .version)
+    - export VERSION=$PACKAGE_JSON_VERSION.$CI_PIPELINE_IID
+    - echo $VERSION > version-file.txt
+    - export IMAGE_TAG=$VERSION
+    - export NEXT_PUBLIC_BACKEND_URL=$DEV_ENDPOINT/api/v1/
+    - echo $NEXT_PUBLIC_BACKEND_URL
+
+  script:
+    - echo "$CI_REGISTRY_PASSWORD" | docker login -u "$CI_REGISTRY_USER" --password-stdin "$CI_REGISTRY"
+    - docker build -t $IMAGE_NAME:$IMAGE_TAG . --build-arg NEXT_PUBLIC_BACKEND_URL=$NEXT_PUBLIC_BACKEND_URL
+    - docker push $IMAGE_NAME:$IMAGE_TAG
+    - docker tag $IMAGE_NAME:$IMAGE_TAG $IMAGE_NAME:latest.$DEPLOY_ENV
+    - docker push $IMAGE_NAME:latest.$DEPLOY_ENV
+  artifacts:
+    paths:
+      - $MICRO_SERVICE/version-file.txt
+
+#BUILDS for dev
+build_frontend_dev:
+  extends: .build_push
+  variables:
+    MICRO_SERVICE: frontend
+    DEPLOY_ENV: dev
+  only:
+    refs:
+      - dev
+    changes:
+      - "frontend/**/*"
+
+build_backend_dev:
+  extends: .build_push
+  variables:
+    MICRO_SERVICE: backend
+    DEPLOY_ENV: dev
+
+  only:
+    refs:
+      - dev
+    changes:
+      - "backend/**/*"
+
+#BUILDS for main
+build_frontend_main:
+  extends: .build_push
+  variables:
+    MICRO_SERVICE: frontend
+    DEPLOY_ENV: prod
+  only:
+    refs:
+      - main
+    changes:
+      - "frontend/**/*"
+
+build_backend_main:
+  extends: .build_push
+  variables:
+    MICRO_SERVICE: backend
+    DEPLOY_ENV: prod
+  only:
+    refs:
+      - main
+    changes:
+      - "backend/**/*"
+
+# deploy template
+.deploy:
+  stage: deploy
+  image: docker:dind
+  tags:
+    - docker
+  variables:
+    SSH_KEY: ""
+    MICRO_SERVICE: ""
+    SERVER_HOST: ""
+    DEPLOY_ENV: ""
+    FRONTEND_PORT: ""
+    BACKEND_PORT: ""
+    DB_PORT: ""
+    EXPRESS_PORT: ""
+    NETWORK_NAME: ""
+    APP_PORT: ""
+    ENDPOINT: ""
+    DEPLOY_SERVER_USER: $SERVER_USER
+    SECRET: ""
+    SERVICEPATH: ""
+  before_script:
+    - mkdir -p /root/.ssh
+    - echo "$SSH_KEY" | tr -d '\r' > /root/.ssh/deploy_key
+    - chmod 600 /root/.ssh/deploy_key
+    - eval "$(ssh-agent -s)"
+    - ssh-add /root/.ssh/deploy_key
+    - touch cat $MICRO_SERVICE/version-file.txt
+    - export VERSION=$(cat $MICRO_SERVICE/version-file.txt)
+
+  script:
+    - scp -P $SERVER_SSH_PORT -o StrictHostKeyChecking=no -i /root/.ssh/deploy_key $(pwd)/docker-compose.yml $SERVER_USER@$DEV_IP:/home/$SERVER_USER/$DEPLOY_ENV
+    - >-
+      ssh -p $SERVER_SSH_PORT -o StrictHostKeyChecking=no -i /root/.ssh/deploy_key $DEPLOY_SERVER_USER@$DEV_IP "
+      cd /home/$SERVER_USER/$DEPLOY_ENV ;
+      echo '----- Logging into Docker registry -----';
+      echo $CI_REGISTRY_PASSWORD | docker login -u $CI_REGISTRY_USER --password-stdin $CI_REGISTRY;
+      export COMPOSE_PROJECT_NAME=$DEPLOY_ENV;
+      export DC_IMAGE_NAME=$IMAGE_NAME/microservice;
+      export DC_IMAGE_TAG=latest.$DEPLOY_ENV;
+      export DC_APP_PORT=$APP_PORT;
+      export DC_NETWORK_NAME=$NETWORK_NAME;
+      export FRONTEND_PORT=$FRONTEND_PORT;
+      export BACKEND_PORT=$BACKEND_PORT;
+      export SECRET=$SECRET;
+      export SERVICEPATH=$SERVICEPATH;
+      export NEXT_PUBLIC_BACKEND_URL=$DEV_ENDPOINT/api/v1/ ;
+      echo NEXT_PUBLIC_BACKEND_URL;
+      export DEPLOY_ENV=$DEPLOY_ENV;
+      export DB_PORT=$DB_PORT;
+      export EXPRESS_PORT=$EXPRESS_PORT;
+      echo '----- Restarting docker containers -----';
+      echo '----- update service $MICRO_SERVICE : $VERSION -----';
+      printenv  ;
+      docker compose down;
+      docker compose up -d;
+      "
+
+#DEPLOYS for dev
+deploy_dev_frontend:
+  extends: .deploy
+  dependencies:
+    - build_frontend_dev
+  variables:
+    MICRO_SERVICE: frontend
+    SSH_KEY: $SSH_KEY
+    DEPLOY_ENV: dev
+    ENDPOINT: $DEV_ENDPOINT
+    APP_PORT: $DEV_FRONT_PORT
+    FRONTEND_PORT: $DEV_FRONT_PORT
+    BACKEND_PORT: $DEV_BACK_PORT
+    DB_PORT: $DEV_DB_PORT
+    EXPRESS_PORT: $DEV_EXPRESS_PORT
+    NETWORK_NAME: "PrimaNetwork_dev"
+    SECRET: "prima"
+    SERVICEPATH: "$DEV_ENDPOINT/"
+  only:
+    refs:
+      - dev
+    changes:
+      - "frontend/**/*"
+
+deploy_dev_backend:
+  extends: .deploy
+  dependencies:
+    - build_backend_dev
+  variables:
+    MICRO_SERVICE: backend
+    SSH_KEY: $SSH_KEY
+    DEPLOY_ENV: dev
+    ENDPOINT: $DEV_ENDPOINT
+    APP_PORT: $DEV_BACK_PORT
+    FRONTEND_PORT: $DEV_FRONT_PORT
+    BACKEND_PORT: $DEV_BACK_PORT
+    DB_PORT: $DEV_DB_PORT
+    EXPRESS_PORT: $DEV_EXPRESS_PORT
+    NETWORK_NAME: "PrimaNetwork_dev"
+    SECRET: "prima"
+    SERVICEPATH: "$DEV_ENDPOINT/"
+  only:
+    refs:
+      - dev
+    changes:
+      - "backend/**/*"
+
+#DEPLOYS for prod
+deploy_prod_frontend:
+  extends: .deploy
+  dependencies:
+    - build_frontend_main
+  variables:
+    MICRO_SERVICE: frontend
+    SSH_KEY: $SSH_KEY
+    DEPLOY_ENV: prod
+    ENDPOINT: $PROD_ENDPOINT
+    APP_PORT: $PROD_FRONT_PORT
+    FRONTEND_PORT: $PROD_FRONT_PORT
+    BACKEND_PORT: $PROD_BACK_PORT
+    DB_PORT: $PROD_DB_PORT
+    EXPRESS_PORT: $PROD_EXPRESS_PORT
+    NETWORK_NAME: "PrimaNetwork_prod"
+    SECRET: "prima"
+    SERVICEPATH: "$DEV_ENDPOINT/"
+  only:
+    refs:
+      - main
+    changes:
+      - "frontend/**/*"
+
+deploy_prod_backend:
+  extends: .deploy
+  dependencies:
+    - build_backend_main
+  variables:
+    MICRO_SERVICE: backend
+    SSH_KEY: $SSH_KEY
+    DEPLOY_ENV: prod
+    ENDPOINT: $PROD_ENDPOINT
+    APP_PORT: $PROD_BACK_PORT
+    FRONTEND_PORT: $PROD_FRONT_PORT
+    BACKEND_PORT: $PROD_BACK_PORT
+    DB_PORT: $PROD_DB_PORT
+    EXPRESS_PORT: $PROD_EXPRESS_PORT
+    NETWORK_NAME: "PrimaNetwork_prod"
+    SECRET: "prima"
+    #   SERVICEPATH : "$DEV_ENDPOINT:$DEV_BACK_PORT/"
+    SERVICEPATH: "$DEV_ENDPOINT/"
+  only:
+    refs:
+      - main
+    changes:
+      - "backend/**/*"

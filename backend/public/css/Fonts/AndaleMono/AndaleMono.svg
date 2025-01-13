@@ -1,0 +1,36 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<metadata>
+Created by FontForge 20190801 at Mon Feb  5 22:27:59 2007
+ By root
+</metadata>
+<defs>
+<font id="HAVSDQ+AndaleMono" horiz-adv-x="1229" >
+  <font-face 
+    font-family="HAVSDQ+AndaleMono"
+    font-weight="400"
+    font-stretch="normal"
+    units-per-em="2048"
+    panose-1="2 0 5 9 0 0 0 0 0 0"
+    ascent="1638"
+    descent="-410"
+    bbox="68 0 1013 1376"
+    underline-thickness="102"
+    underline-position="-460"
+    unicode-range="U+0020-0020"
+  />
+<missing-glyph 
+d="M68 0v1365h544v-1365h-544zM136 68h408v1229h-408v-1229z" />
+    <glyph glyph-name=".notdef" 
+d="M68 0v1365h544v-1365h-544zM136 68h408v1229h-408v-1229z" />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" 
+ />
+    <glyph glyph-name="space" unicode=" " 
+ />
+    <glyph glyph-name="NameMe.0" 
+d="M216 0v1376h797v-1376h-797zM344 128h541v1120h-541v-1120z" />
+  </font>
+</defs></svg>

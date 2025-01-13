@@ -1,0 +1,73 @@
+version: '3'
+services:
+  mongo:
+    image: mongo
+    container_name: carSellingMongo
+    ports:
+      - 27018:27017
+    volumes:
+      - ./data:/data/db
+    networks:
+      - myDynamicNetwork
+    healthcheck:
+      test: echo 'db.runCommand("ping").ok' | mongosh carSellingMongo:27017/test --quiet
+      interval: 6s
+      timeout: 5s
+      retries: 20
+      start_period: 20s
+  mongo-express:
+    image: mongo-express
+    container_name: carSellingMongoExpress
+    ports:
+      - 8093:8081
+    networks:
+      - myDynamicNetwork
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+    depends_on:
+      mongo:
+        condition: service_healthy
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: carSellingBackend
+    ports:
+      - "6003:3003"
+    depends_on:
+      mongo:
+        condition: service_healthy
+    volumes:
+      - .:/app
+      - /app/node_modules
+    networks:
+      - myDynamicNetwork
+    environment:
+      - DEPLOY_ENV=dev
+      - DB_PORT=27017
+      - EXPRESS_PORT=8093
+      - PORT=3003
+      - SECRET=Drivezy_Mix
+      - SERVICEPATH=https://api-drivezy.mooo.com:6003/
+      - MONGO_URI=mongodb://mongo:27017/Drivezy_Mix
+      - DEBUG=nodemon
+    command: nodemon --legacy-watch --watch . -e js,json app.js
+  frontend:
+    container_name: carSellingFrontend
+    build:
+      context: ../frontend
+      dockerfile: Dockerfile
+    ports:
+      - '${FRONTEND_PORT:-6000}:${FRONTEND_PORT:-3000}'
+    networks:
+      - myDynamicNetwork
+    depends_on:
+      - backend
+    restart: unless-stopped
+    environment:
+      - FRONTEND_PORT=${FRONTEND_PORT:-6000}
+      - NEXT_PUBLIC_BACKEND_URL= https://api-drivezy.mooo.com/api/v1/
+networks:
+  myDynamicNetwork:
+    name: LocalDrivezy_MixNetwork
+    driver: bridge

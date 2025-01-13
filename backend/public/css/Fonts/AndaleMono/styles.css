@@ -1,0 +1,9 @@
+@font-face {
+  font-family: 'AndaleMono';
+  src: url(./AndaleMono.eot);
+  src: url(./AndaleMono.eot?#iefix) format('embedded-opentype'),
+       url(./AndaleMono.otf) format('otf'),
+       url(./AndaleMono.svg#AndaleMono) format('svg'),
+       url(./AndaleMono.woff) format('woff'),
+       url(./AndaleMono.woff2) format('woff2');
+}

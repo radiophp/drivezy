@@ -1,0 +1,52 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" >
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1">
+<metadata>
+Created by FontForge 20190801 at Wed Sep  5 14:41:20 2007
+ By root
+</metadata>
+<defs>
+<font id="YOBCTR+ArialMT" horiz-adv-x="1139" >
+  <font-face 
+    font-family="YOBCTR+ArialMT"
+    font-weight="400"
+    font-stretch="normal"
+    units-per-em="2048"
+    panose-1="2 0 5 3 0 0 0 0 0 0"
+    ascent="1638"
+    descent="-410"
+    bbox="0 -26 1280 1491"
+    underline-thickness="150"
+    underline-position="-592"
+    unicode-range="U+0020-0032"
+  />
+<missing-glyph horiz-adv-x="748" 
+d="M68 0v1365h544v-1365h-544zM136 68h408v1229h-408v-1229z" />
+    <glyph glyph-name=".notdef" horiz-adv-x="748" 
+d="M68 0v1365h544v-1365h-544zM136 68h408v1229h-408v-1229z" />
+    <glyph glyph-name=".null" horiz-adv-x="0" 
+ />
+    <glyph glyph-name="nonmarkingreturn" horiz-adv-x="682" 
+ />
+    <glyph glyph-name="space" unicode=" " horiz-adv-x="569" 
+ />
+    <glyph glyph-name="two" unicode="2" 
+d="M1031 173v-173h-969q-2 65 21 125q37 99 118.5 195t235.5 222q239 196 323 310.5t84 216.5q0 107 -76.5 180.5t-199.5 73.5q-130 0 -208 -78t-79 -216l-185 19q19 207 143 315.5t333 108.5q211 0 334 -117t123 -290q0 -88 -36 -173t-119.5 -179t-277.5 -258
+q-162 -136 -208 -184.5t-76 -97.5h719z" />
+    <glyph glyph-name="NameMe.0" horiz-adv-x="1536" 
+d="M256 0v1280h1024v-1280h-1024zM288 32h960v1216h-960v-1216z" />
+    <glyph glyph-name="NameMe.1" horiz-adv-x="569" 
+ />
+    <glyph glyph-name="NameMe.2" horiz-adv-x="569" 
+d="M0 -25l425 1516h144l-424 -1516h-145z" />
+    <glyph glyph-name="NameMe.3" 
+d="M85 723q0 260 53.5 418.5t159 244.5t265.5 86q118 0 207 -47.5t147 -137t91 -218t33 -346.5q0 -258 -53 -416.5t-158.5 -245t-266.5 -86.5q-212 0 -333 152q-145 183 -145 596zM270 723q0 -361 84.5 -480.5t208.5 -119.5t208.5 120t84.5 480q0 362 -84.5 481t-210.5 119
+q-124 0 -198 -105q-93 -134 -93 -495z" />
+    <glyph glyph-name="NameMe.5" 
+d="M86 387l180 24q31 -153 105.5 -220.5t181.5 -67.5q127 0 214.5 88t87.5 218q0 124 -81 204.5t-206 80.5q-51 0 -127 -20l20 158q18 -2 29 -2q115 0 207 60t92 185q0 99 -67 164t-173 65q-105 0 -175 -66t-90 -198l-180 32q33 181 150 280.5t291 99.5q120 0 221 -51.5
+t154.5 -140.5t53.5 -189q0 -95 -51 -173t-151 -124q130 -30 202 -124.5t72 -236.5q0 -192 -140 -325.5t-354 -133.5q-193 0 -320.5 115t-145.5 298z" />
+    <glyph glyph-name="NameMe.6" 
+d="M362 795q-112 41 -166 117t-54 182q0 160 115 269t306 109q192 0 309 -111.5t117 -271.5q0 -102 -53.5 -177.5t-162.5 -116.5q135 -44 205.5 -142t70.5 -234q0 -188 -133 -316t-350 -128t-350 128.5t-133 320.5q0 143 72.5 239.5t206.5 131.5zM326 1100q0 -104 67 -170
+t174 -66q104 0 170.5 65.5t66.5 160.5q0 99 -68.5 166.5t-170.5 67.5q-103 0 -171 -66t-68 -158zM268 423q0 -77 36.5 -149t108.5 -111.5t155 -39.5q129 0 213 83t84 211q0 130 -86.5 215t-216.5 85q-127 0 -210.5 -84t-83.5 -210z" />
+  </font>
+</defs></svg>

@@ -1,0 +1,5 @@
+node_modules/
+public/invoices
+public/uploads
+../data/
+backups/

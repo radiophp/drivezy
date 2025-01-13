@@ -1,0 +1,147 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@200..900&family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Roboto+Slab:wght@100..900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=M+PLUS+Rounded+1c&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&family=M+PLUS+Rounded+1c&family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Noto+Serif:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Voces&family=Work+Sans:ital,wght@0,100..900;1,100..900&display=swap');
+@font-face {
+    font-family: 'HelveticaNeue';
+    src: url('Fonts/HelveticaNeue/HelveticaNeue.ttf');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family: 'HelveticaNeue-Bold-02';
+    src: url('Fonts/HelveticaNeue/HelveticaNeue-Bold-02.ttf');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family: 'ArialRoundedMTBold';
+
+    src:url("Fonts/ArialRoundedMTBold/ArialRoundedMTBold.eot")  ;
+    src: url('Fonts/ArialRoundedMTBold/ArialRoundedMTBold.ttf') format('truetype') ,
+    url("Fonts/ArialRoundedMTBold/ArialRoundedMTBold.eot?#iefix") format('embedded-opentype'),
+    url('Fonts/ArialRoundedMTBold/ArialRoundedMTBold.woff') format('woff'),
+    url('Fonts/ArialRoundedMTBold/ArialRoundedMTBold.svg#ArialRoundedMTBold') format('svg');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family: 'HelveticaNeue-Roman';
+    src:url("Fonts/HelveticaNeue-Roman/HelveticaNeue-Roman.eot")  ;
+    src: url('Fonts/HelveticaNeue-Roman/HelveticaNeue-Roman.ttf') format('truetype') ,
+    url("Fonts/HelveticaNeue-Roman/HelveticaNeue-Roman.eot?#iefix") format('embedded-opentype'),
+    url('Fonts/HelveticaNeue-Roman/HelveticaNeue-Roman.woff') format('woff'),
+    url('Fonts/HelveticaNeue-Roman/HelveticaNeue-Roman.svg#HelveticaNeue-Roman') format('svg');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family: 'HelveticaNeueThin';
+
+    src: url('Fonts/HelveticaNeue-5/HelveticaNeueThin.ttf') format('truetype')  ;
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+/*@font-face {*/
+/*    font-family: 'HelveticaNeue-Roman';*/
+
+/*    src: url('Fonts/FreeSans/FreeSans.ttf') format('truetype')  ;*/
+/*    font-weight:normal;*/
+/*    font-style:normal;*/
+/*    font-display:swap;*/
+/*}*/
+@font-face {
+    font-family: 'HelveticaNeue-Bold';
+    src: url('Fonts/FreeSans/FreeSans.ttf') format('truetype');
+    font-weight:bold;
+    font-style:normal;
+    font-display:swap;
+}
+/*@font-face {*/
+/*    font-family: 'HelveticaNeue-Bold';*/
+/*    src: url('Fonts/HelveticaNeue-Bold/HelveticaNeue-Bold.eot');*/
+/*    src: url('Fonts/HelveticaNeue-Bold/HelveticaNeue-Bold.eot?#iefix') format('embedded-opentype'),*/
+/*    url('Fonts/HelveticaNeue-Bold/HelveticaNeue-Bold.woff') format('woff'),*/
+/*    url('Fonts/HelveticaNeue-Bold/HelveticaNeue-Bold.ttf') format('truetype'),*/
+/*    url('Fonts/HelveticaNeue-Bold/HelveticaNeue-Bold.svg#HelveticaNeue-Bold') format('svg');*/
+/*    font-weight:normal;*/
+/*    font-style:normal;*/
+/*    font-display:swap;*/
+/*}*/
+@font-face {
+    font-family: 'AndaleMono';
+    src: url('Fonts/AndaleMono/AndaleMono.eot');
+    src: url('Fonts/AndaleMono/AndaleMono.eot?#iefix') format('embedded-opentype'),
+    url('Fonts/AndaleMono/AndaleMono.woff') format('woff'),
+    url('Fonts/AndaleMono/AndaleMono.ttf') format('truetype'),
+    url('Fonts/AndaleMono/AndaleMono.svg#AndaleMono') format('svg');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family: 'ArialMT';
+    src: url('Fonts/ArialMT/ArialMT.otf');
+    /*src: url('Fonts/ArialMT/ArialMT.eot?#iefix') format('embedded-opentype'),*/
+    /*url('Fonts/ArialMT/ArialMT.woff') format('woff'),*/
+    /*url('Fonts/ArialMT/ArialMT.ttf') format('truetype'),*/
+    /*url('Fonts/ArialMT/ArialMT.svg#ArialMT') format('svg');*/
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family: 'Arial-BoldMT';
+    src: url('Fonts/ArialMT-Bold2/ArialMT-Bold.eot');
+    src: url('Fonts/ArialMT-Bold2/ArialMT-Bold.eot?#iefix') format('embedded-opentype'),
+    url('Fonts/ArialMT-Bold2/ArialMT-Bold.woff') format('woff'),
+    url('Fonts/ArialMT-Bold2/ArialMT-Bold.ttf') format('truetype'),
+    url('Fonts/ArialMT-Bold2/ArialMT-Bold.svg#Arial-BoldMT') format('svg');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family: 'Almarai-Regular';
+    src: url('Fonts/Almarai/Almarai-Regular.eot');
+    src: url('Fonts/Almarai/Almarai-Regular.eot?#iefix') format('embedded-opentype'),
+    url('Fonts/Almarai/Almarai-Regular.woff') format('woff'),
+    url('Fonts/Almarai/Almarai-Regular.ttf') format('truetype'),
+    url('Fonts/Almarai/Almarai-Regular.svg#Almarai-Regular') format('svg');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+
+@font-face {
+    font-family: 'Almarai-Regular';
+    src: url('Fonts/Almarai/Almarai-Regular.ttf') format('truetype');
+
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}
+@font-face {
+    font-family: 'AndaleMono';
+    src: url('Fonts/AndaleMono/AndaleMono.eot');
+    src: url('Fonts/AndaleMono/AndaleMono.eot?#iefix') format('embedded-opentype'),
+    url('Fonts/AndaleMono/AndaleMono.woff') format('woff'),
+    url('Fonts/AndaleMono/AndaleMono.ttf') format('truetype'),
+    url('Fonts/AndaleMono/AndaleMono.svg#AndaleMono') format('svg');
+    font-weight:normal;
+    font-style:normal;
+    font-display:swap;
+}

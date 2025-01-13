@@ -1,0 +1,6 @@
+*.js -text -filter -merge
+*.css -text -filter -merge
+*.ts -text -filter -merge
+*.yml -text -filter -merge
+*.txt -text -filter -merge
+*.log -text -filter -merge

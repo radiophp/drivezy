@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Invoice Template</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+
+        body {
+
+            font-family: 'Roboto', sans-serif;
+
+        }
+        u{
+            font-weight: bold;
+        }
+
+        .invoice {
+            padding: 25px;
+
+            /*border: 1px solid #ccc;*/
+            max-width: 800px;
+            margin: 0 auto;
+            padding-top: 20px;
+        }
+        .invoice-header {
+            text-align: center;
+            margin-bottom: 8px;
+
+        }
+        .invoice-header h2 {
+            margin: 0;
+            font-weight: 600;
+            font-size: 16px;
+        }
+        .invoice-info-section {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: -10px;
+        }
+        .invoice-info-box {
+            width: 48%;
+            padding: 0;
+            margin: 0;
+
+            border: 0px solid #ccc;
+            font-weight: bold;
+        }
+
+        .invoice-info p {
+            margin: 0;
+        }
+        .invoice-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .invoice-table th, .invoice-table td {
+            padding: 8px;
+            border: 1px solid #ccc;
+        }
+        .invoice-table th {
+            background-color: #f2f2f2;
+        }
+        .invoice-total {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .invoice-total p {
+            margin-bottom: 5px;
+        }
+        .checkbox-row {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+
+        }
+        .checkbox-label {
+            margin-right: 10px;
+        }
+        .invoice-logo {
+            text-align: center;
+            margin-bottom: 8px;
+        }
+        .invoice-logo img {
+            max-width: 400px;
+        }
+
+        .invoice-info-box p {
+            display: flex; /* Apply flexbox to the paragraph */
+        }
+
+        .invoice-info-box span {
+            flex-grow: 1; /* Allows the span to take up remaining space */
+            white-space: nowrap; /* Prevents the text inside the span from wrapping */
+            overflow: hidden; /* Ensures content doesn't overflow its container */
+            text-overflow: ellipsis; /* Adds an ellipsis if the content overflows */
+            border-bottom: 0.45mm solid #000;
+            text-align: center;
+            font-weight: normal;
+            margin-left: 7px;
+            font-size: 13px;
+            text-underline-offset: 7px;
+            margin-top: -4px;
+
+        }
+        .describe{
+            text-align: left;
+            font-weight: normal;
+
+            font-size: 10pt;
+        }
+        /* Hide the default checkbox */
+        .custom-checkbox input {
+            display: none;
+        }
+
+
+        /* Create a custom box */
+        .custom-checkbox .checkmark {
+            display: inline-block;
+            width: 10px; /* Width of the box */
+            height: 10px; /* Height of the box */
+            background-color: #fff; /* Background color of the box */
+            border: 2px solid black; /* Border of the box */
+            position: relative; /* Positioning context for the checkmark */
+        }
+
+        /* Style the checkmark/indicator (hidden when not checked) */
+        .custom-checkbox .checkmark:after {
+            content: "";
+            display: none;
+            width: 3px;
+            height: 8px;
+            border: solid black;
+            border-width: 0 3px 3px 0;
+            transform: rotate(45deg);
+            position: absolute;
+            top: 0px;
+            left: 2px;
+        }
+
+        /* Show the checkmark when the checkbox is checked */
+        .custom-checkbox input:checked + .checkmark:after {
+            display: block;
+        }
+
+        /* Optional: add hover effect */
+        .custom-checkbox:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        .custom-checkbox {
+
+            display: inline-block;
+            overflow: visible;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        p{
+            margin: 5px 0 11px;
+            font-weight: 500;
+            font-size: 14px;
+        }
+        h2,span.h2{
+            margin: 10px 0;
+            font-weight: 550;
+            font-size: 16px;
+        }
+        span.h2{
+            display: contents;
+        }
+
+        .
+
+    </style>
+</head>
+<body>
+<div class="invoice">
+    <div class="invoice-header">
+        <h2>Kommissionsverkauf von Gebrauchtwagen über</h2>
+    </div>
+    <div class="invoice-logo">
+        <img src=" data:image/jpeg;base64,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
+JAJI/CX/gmp8V/jn+wj+334f8AAmgDVPBWveNtf0/wzr2katpoInie7WP54pV4Kb3KyLggFsHDEH+oSq95pNrqE8Mtxa288ls2+F5IwzRN6qT0PuKI1LKwON3c/Nn/AIOE/wDgkv4g/bf8K6H8SvhzZf2l4+8G2b2F3pikLJrGnAyTKsWfvTRyM5VP4xMw6hQfyT/Zn/
+4Kg/tJf8E0bS88C6DrWo+H9PtZ3eXw34i0kSpYzMcuVjmUSQktklVKgkkkE81/U1WX4h8FaN4u2f2tpGl6p5f3Ptdqk236bgcURqWVmDjrdH4T/wDBOr/gtD+1B+1t/wAFAfhhouva5fax4PuNaSDV9L0Tw/FHbrDKjxebO8URkEcZYOS77V2ZPTNfvZVXRtDsfDlgtr
+p9na2Nqn3YbeJYo1+iqAKtVMpJ7Ia0CiiipGFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAFFFFABRRRQAUUUUAf/2Q==">
+    </div>
+    <div class="invoice-info-section">
+        <div class="invoice-info-box">
+            <p><b>Käufer</b></p>
+            <p>Name: <span>customerName1 customerFamily1</span></p>
+            <p>Anschrift:<span>Hay Al Maghreb Al Arabi Imm 4 Appt 8 Grp 11 Res Firdaouss Temara / Marokko</span></p>
+            <p>Wohnort: <span>456 Park Ave, City, Country</span></p>
+        </div>
+        <div class="invoice-info-box">
+            <p><b>Verkäufer</b></p>
+            <p>Name: <span>mohammad inanlooooo</span></p>
+            <p>Anschrift:<span>aaa</span> </p>
+            <p>Wohnort: <span>456 Park Ave, City, Country</span></p>
+        </div>
+    </div>
+    <div class="describe">
+
+        <p>
+
+            Zwischen den vorgezeichneten Vertragspartnern ist heute dieser Kaufvertrag geschlossen worden:Der Verkäufer verkauft hiermit das nachstehend näher beschriebene Fahrzeug an den Käufer, im gebrauchten Zustand, nach Probefahrtund unter Ausschluss jeglicher Gewährleistung/ Garantie. Gekauft wie gesehen!
+        </p>
+    </div>
+    <div>
+        <h2>Bezeichnung des Fahrzeuges</h2>
+    </div>
+    <div class="invoice-info-section">
+        <div class="invoice-info-box">
+            <p> Fabrikat: <span>BMW</span></p>
+            <p>Fahrzeugbrief-Nr: <span>undefined</span>
+            <p>Amtliches Kennzeichen: <span>455FG588</span>
+            <p>Tag der Erstzulassung: <span>undefined</span>
+
+        </div>
+        <div class="invoice-info-box">
+            <p>Typ: <span>BMW X5 </span>
+            <p>Fahrgestell-Nr: <span>Vin1157</span>
+            <p>HU/AU: <span>undefined</span>
+            <p>Kilometerstand lt. Tacho: <span>100000 KM</span>
+
+        </div>
+    </div>
+    <div class="checkbox-row" style="margin-top: 15px;display: flex;justify-content: space-between">
+        <label class="custom-checkbox" style="width: 8%;">
+
+            Unfallschaden:
+        </label>
+        <label class="custom-checkbox" style="width: 18%;margin-left: 3%">
+            <input type="checkbox" />
+            <span class="checkmark"> </span>
+            Unfallfrei
+        </label> <label class="custom-checkbox" style="width: 22%;margin-left: 3%">
+        <input type="checkbox" />
+        <span class="checkmark"> </span>
+        Unfallschaden
+    </label><label class="custom-checkbox" style="width: 40%;margin-left: 3%">
+
+        <input type="checkbox" />
+        <span class="checkmark"> </span>
+        reparierte Vorschäden möglich
+    </label> </b>
+    </div>
+    <div class="invoice-info-box" style="width: auto;text-align: left">
+
+        <p>Sonstige :   <span >undefined</span></p>
+    </div>
+    <div>
+        <h2>
+            Die Übergabe des Fahrzeuges an den Käufer:
+        </h2>
+
+    </div>
+    <div>
+        <div class="checkbox-row" style="font-size: 14px">
+            <label class="custom-checkbox" style="width: 25%;">
+                <input type="checkbox" checked/>
+                <span class="checkmark"> </span>
+                KFZ- Brief
+            </label> <label class="custom-checkbox" style="width: 25%;">
+            <input type="checkbox" checked/>
+            <span class="checkmark"> </span>
+            Fahrzeugschein
+        </label> <label class="custom-checkbox" style="width: 25%;">
+            <input type="checkbox" checked/>
+            <span class="checkmark"> </span>
+            Hauptuntersuchung
+        </label> <label class="custom-checkbox" style="width: 25%;">
+            <input type="checkbox" checked/>
+            <span class="checkmark"> </span>
+            <span style="font-weight: normal">5555</span> Schlüssel
+        </label>
+        </div>
+    </div>
+    <div class="invoice-info-box" style="width: auto;text-align: left">
+        <p> Besondere Vereinbarungen:<span >desc fgdfgdfg</span></p>
+
+    </div>
+    <div class="invoice-info-box" style="width: auto;text-align: left;margin-top: 30px">
+        <p>  <span > </span></p>
+
+    </div>
+    <div class="describe">
+        <p>
+
+            Das Fahrzeug wurde im Auftrag des oben genannten Verkäufers im Kundenauftrag verkauft. Somit entfallen alle
+            Gewährleistungs- und Garantieansprüche gegenüber Drivezy Mix automobile. Der Käufer bestätigt mit seiner
+            Einwilligung und Unterschrift die Kenntnisnahme.
+
+        </p>
+    </div>
+    <div class="checkbox-row" style="display:flow-root;line-height: 33px">
+        <label class="custom-checkbox" style="width: 100%; ">
+            <input type="checkbox" checked/>
+            <span class="checkmark"> </span>
+            Gekauft wie gesehen, unter Ausschluss jeglicher Gewährleistung und Garantie
+        </label>  <label class="custom-checkbox" style="width: 100%;">
+        <input type="checkbox" checked/>
+        <span class="checkmark"> </span>
+        Im Kundenauftrag, keine Gewährleistung und Garantie sowie Rücknahme
+    </label>   <label class="custom-checkbox" style="width: 100%;">
+        <input type="checkbox" checked/>
+        <span class="checkmark"> </span>
+        Verkauf erfolgt nach Export, unter Ausschluss jeglicher Gewährleistung und Garantie
+    </label>  <label class="custom-checkbox" style="width: 100%;">
+        <input type="checkbox" checked/>
+        <span class="checkmark"> </span>
+        Differenzbesteuerung nach § 25a
+    </label>
+    </div>
+
+
+    <div class="invoice-info-box" style="width: auto;text-align: left">
+        <p style="display: inline-flex;width: 47%"> Gesamtpreis Brutto:<span > 202200  </span></p>
+        <p style="display: inline-flex;width: 30%"> Netto:<span >19% </span></p>
+        <p style="display: inline-flex;width: 20%"> MwSt:<span >  </span></p>
+
+    </div>
+
+
+
+    <div class="invoice-info-box" style="width: auto;text-align: left">
+        <p style="display: inline-flex;width: 100%"> in Worten:<span > Zwei-Null-Zwei-Zwei-Null-Null  </span></p>
+        <p style="display: inline-flex;width: 70%"> Datum, Ort:<span >  2023-11-27  Langenhagen </span></p>
+
+
+    </div>
+
+
+    <div class="invoice-info-section">
+        <div class="invoice-info-box">
+            <p><b>Unterschrift des Käufers</b></p>
+        </div>
+        <div class="invoice-info-box">
+            <p><b>Unterschrift des Verkäufers</b></p>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
