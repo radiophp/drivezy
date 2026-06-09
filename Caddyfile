@@ -1,0 +1,8 @@
+parsa-akbari.strangled.net {
+    tls internal
+
+    reverse_proxy /api/* backend:3003
+    reverse_proxy /public/* backend:3003
+    reverse_proxy /mongo-express/* mongo-express:8081
+    reverse_proxy frontend:3000
+}

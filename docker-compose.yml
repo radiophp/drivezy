@@ -1,44 +1,43 @@
-version: '3'
 services:
   mongo:
-    image: mongo:4.4.6
-    container_name: carSellingMongo_${DEPLOY_ENV}
-    command: ["mongod", "--port", "${DB_PORT:-27017}", "--bind_ip_all"]
+    image: mongo:7
+    container_name: carSellingMongo_dev
+    command: ["mongod", "--port", "27017", "--bind_ip_all"]
     ports:
-      - '${DB_PORT:-27017}:${DB_PORT:-27017}'
+      - '27017:27017'
     volumes:
       - ./data:/data/db
     restart: unless-stopped
     networks:
       - myDynamicNetwork
     healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongo mongo:${DB_PORT:-27017}/test --quiet
+      test: echo 'db.runCommand("ping").ok' | mongosh mongodb://carSellingMongo_dev:27017/test --quiet 2>&1 || exit 1
       interval: 6s
       timeout: 5s
       retries: 20
       start_period: 20s
- 
+
   mongo-express:
     image: mongo-express:latest
-    container_name: carSellingMongoExpress_${DEPLOY_ENV}
+    container_name: carSellingMongoExpress_dev
     ports:
-      - ${EXPRESS_PORT:-8093}:8081
+      - 8093:8081
     environment:
-      - ME_CONFIG_MONGODB_SERVER=carSellingMongo_${DEPLOY_ENV}  # MongoDB container name
-      - ME_CONFIG_MONGODB_PORT=${DB_PORT:-27017}  # Explicitly specify the MongoDB port
-      # - ME_CONFIG_MONGODB_ADMINUSERNAME=admin  # Uncomment and replace with your MongoDB username, if applicable
-      # - ME_CONFIG_MONGODB_ADMINPASSWORD=secret  # Uncomment and replace with your MongoDB password, if applicable
+      - ME_CONFIG_MONGODB_SERVER=carSellingMongo_dev
+      - ME_CONFIG_MONGODB_PORT=27017
     depends_on:
-      - mongo 
+      - mongo
     restart: unless-stopped
     networks:
       - myDynamicNetwork
 
   backend:
-   container_name: carSellingBackend_${DEPLOY_ENV}
-   image : $DC_IMAGE_NAME/backend:latest.${DEPLOY_ENV}
+   container_name: carSellingBackend_dev
+   build:
+      context: ./backend
+      dockerfile: Dockerfile
    ports:
-     - '${BACKEND_PORT:-6003}:${BACKEND_PORT:-3003}'
+     - '6003:3003'
    volumes:
      - ./backend/public/invoices:/app/public/invoices
      - ./backend/public/uploads:/app/public/uploads
@@ -48,32 +47,50 @@ services:
    restart: always
    networks:
      - myDynamicNetwork
-   # If your backend connects to MongoDB, specify MongoDB connection URI correctly with username and password if applicable.
    environment:
-     - MONGO_URI=mongodb://carSellingMongo_${DEPLOY_ENV}:${DB_PORT:-27017}/Drivezy_Mix
-     - PORT=${BACKEND_PORT:-3001}
-     - SECRET=$SECRET
-     - SERVICEPATH=$SERVICEPATH
+     - MONGO_URI=mongodb://carSellingMongo_dev:27017/Drivezy_Mix
+     - PORT=3003
+     - SECRET=Drivezy_Mix
+     - SERVICEPATH=https://parsa-akbari.strangled.net/api/v1/
 
   frontend:
-     container_name: carSellingFrontend_${DEPLOY_ENV}
+     container_name: carSellingFrontend_dev
      build:
          context: ./frontend
          dockerfile: Dockerfile
+         args:
+           - NEXT_PUBLIC_BACKEND_URL=https://parsa-akbari.strangled.net/api/v1/
      ports:
-       - '${FRONTEND_PORT:-6000}:${FRONTEND_PORT:-3000}'
+       - '6000:3000'
      networks:
        - myDynamicNetwork
      depends_on:
        - backend
      restart: unless-stopped
      environment:
-       - FRONTEND_PORT=${FRONTEND_PORT:-3000}
-       - NEXT_PUBLIC_BACKEND_URL= http://Drivezy_Mixdev.mooo.com:${BACKEND_PORT:-3001}/api/v1/
+       - FRONTEND_PORT=3000
+       - NEXT_PUBLIC_BACKEND_URL=https://parsa-akbari.strangled.net/api/v1/
 
+  caddy:
+    image: caddy:latest
+    container_name: caddy
+    ports:
+      - '80:80'
+      - '443:443'
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - caddy_data:/data
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+    networks:
+      - myDynamicNetwork
 
-#MY NETWORK FOR ALL CONTAINERS
 networks:
   myDynamicNetwork:
-    name: ${DC_NETWORK_NAME:-default_network_name}
+    name: Drivezy_MixNetwork
     driver: bridge
+
+volumes:
+  caddy_data:

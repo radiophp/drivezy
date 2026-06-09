@@ -21,8 +21,9 @@ we have changed the name of the project from CirCar to Drivezy Mix.
 6. [Frontend Development](#frontend-development)
 7. [Tech Stack](#tech-stack)
 8. [Getting Started](#getting-started)
-9. [Authors](#authors)
-10. [License](#license)
+9. [Deployment](#deployment)
+10. [Authors](#authors)
+11. [License](#license)
 
 ---
 
@@ -55,7 +56,7 @@ After logging in, users are directed to a **dashboard** containing a quick-acces
 
 ### Define Basic Information
 
-- Enter essential data (e.g., shop owner’s name, shop name, ZIP/postal code, EORI number).
+- Enter essential data (e.g., shop owner's name, shop name, ZIP/postal code, EORI number).
 - Used for **PDF creation** and consistency across contracts and invoices.
 
 ### Define Basic Data
@@ -188,46 +189,82 @@ After logging in, users are directed to a **dashboard** containing a quick-acces
 
 ## Getting Started
 
- **Clone the Repository**
-   ```bash
-   git clone https://github.com/YourUsername/drivezy-mix.git
-   cd drivezy-mix
-```markdown
-## Install Dependencies
+### Clone the Repository
+```bash
+git clone https://github.com/YourUsername/drivezy-mix.git
+cd drivezy-mix
+```
 
-### Backend
+### Install Dependencies
+
+#### Backend
 ```bash
 cd backend
 npm install
 ```
 
-### Frontend
+#### Frontend
 ```bash
 cd frontend
 npm install
 ```
 
-## Set Up Environment Variables
+### Set Up Environment Variables
 
 Create `.env` files for both backend and frontend with the required configuration (e.g., **MongoDB connection strings**, **JWT secrets**).
 
-## Run the Application
+### Run the Application
 
-### Backend
+#### Backend
 ```bash
 npm run dev
 ```
 
-### Frontend
+#### Frontend
 ```bash
 npm run dev
 ```
+
 Access the application at [http://localhost:3000/](http://localhost:3000/).
 
-## Login
+### Login
 Use the demo credentials:
 - **User**: `parsa@akbari.com`
 - **Password**: `123456`
+
+---
+
+## Deployment (Production)
+
+### Prerequisites
+- Server with Docker and Docker Compose installed
+- SSH access to the server
+- Git repository access
+
+### Deploy
+
+1. **SSH into the server**
+   ```bash
+   ssh mohmmad@34.116.136.242
+   ```
+
+2. **Pull the latest code**
+   ```bash
+   cd ~/drivezy
+   git pull
+   ```
+
+3. **Build and start the containers**
+   ```bash
+   sudo docker compose up -d --build
+   ```
+
+The application will be available at:
+- **Frontend**: https://parsa-akbari.strangled.net/
+- **API**: https://parsa-akbari.strangled.net/api/v1/
+- **mongo-express**: https://parsa-akbari.strangled.net/mongo-express/
+
+---
 
 ## Authors
 - **Parsa Akbari**
@@ -237,16 +274,5 @@ Use the demo credentials:
 ## License
 This project is licensed under the [MIT License](LICENSE).
 
-**Thank you for using Drivezy Mix!**  
+**Thank you for using Drivezy Mix!**
 If you have any questions or feedback, feel free to open an issue in this repository or contact the contributors directly.
-
----
-
-### How to Download
-
-1. **Copy** the code block above (including the opening and closing triple backticks).
-2. **Paste** it into a file named `README.md` in your repository or local folder.
-3. **Commit** and push the file to your GitHub repository if desired.
-
-Now you have a complete, ready-to-use `README.md` file. Enjoy!
-```
